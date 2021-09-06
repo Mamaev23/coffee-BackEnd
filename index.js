@@ -5,8 +5,8 @@ const cors = require('cors')
 
 const app = express()
 
-app.use(require("./routes/index"))
 app.use(express.json())
+app.use(require("./routes/index"))
 app.use(cors())
 
 
