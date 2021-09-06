@@ -1,18 +1,18 @@
 const Coffee = require("../Models/Coffee.model")
-const Category = require("../Models/Category.model")
 
 module.exports.coffeeController = {
   addCoffee: async (req, res) => {
+    const { image, name, volume, description, price, categoryId } = req.body
     try {
-      await Coffee.create({
-        image: req.body.image,
-        name: req.body.name,
-        volume: req.body.volume,
-        description: req.body.description,
-        price: req.body.price,
-        categoryId: req.body.categoryId
+      const coffee = await Coffee.create({
+        image,
+        name,
+        volume,
+        description,
+        price,
+        categoryId
       })
-      res.json("Кофе добавлено")
+      res.json(coffee)
     } catch (e) {
       res
       .status(400)
@@ -22,9 +22,8 @@ module.exports.coffeeController = {
   getCoffee:  async (req, res) => {
     try {
       const coffee = await Coffee.find()
-      const category = await Category.find()
 
-      res.json(coffee, category)
+      res.json(coffee)
     } catch (e) {
       res
       .status(400)
@@ -35,8 +34,7 @@ module.exports.coffeeController = {
   getCoffeeId: async (req, res) => {
     try {
       const coffee = await Coffee.findById(req.params.id)
-      const category = await Category.find();
-      res.json(coffee, category)
+      res.json(coffee)
     } catch (e) {
       res
       .status(400)
@@ -47,8 +45,7 @@ module.exports.coffeeController = {
   getCoffeeCategory: async (req, res) => {
     try {
       const coffee = await Coffee.find({categoryId: req.params.id})
-      const category = await Category.find()
-      res.json(coffee, category)
+      res.json(coffee)
     } catch (e) {
       res
       .status(400)
@@ -58,7 +55,7 @@ module.exports.coffeeController = {
   deleteCoffee: async (req, res) => {
     try {
       await Coffee.findByIdAndRemove(req.params.id)
-      res.json("Лекарство удалено")
+      res.json("Кофе удалено")
     } catch (e) {
       res
       .status(400)

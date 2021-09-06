@@ -8,7 +8,7 @@ const router = Router()
 router.post("/users", [
   check("login", "Логин должен быть").notEmpty(),
   check("password", "пароль должен быть минимум 5 символов и максимум 10 символов").isLength({min: 5, max: 10})
-], middleware,  usersController.registration)
-router.post("/login", middleware, usersController.login)
+], usersController.registration)
+router.post("/login", usersController.login)
 
 module.exports = router

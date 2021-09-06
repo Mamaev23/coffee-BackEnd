@@ -3,10 +3,10 @@ const { coffeeController } = require("../controllers/coffee.controller")
 
 const router = Router()
 
-router.post("/", coffeeController.addCoffee)
-router.get("/", coffeeController.getCoffee)
-router.get("/category/:id", coffeeController.getCoffeeCategory)
-router.get("/:id", coffeeController.getCoffeeId)
-router.delete("/:id", coffeeController.deleteCoffee)
+router.post("/coffee", coffeeController.addCoffee)//работает
+router.get("/coffee", coffeeController.getCoffee)//работает
+router.get("/category/:id", coffeeController.getCoffeeCategory)//работает
+router.get("/coffee/:id", coffeeController.getCoffeeId)//работает
+router.delete("/coffee/:id", coffeeController.deleteCoffee)//работает
 
 module.exports = router
