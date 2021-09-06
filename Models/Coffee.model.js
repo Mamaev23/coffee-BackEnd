@@ -5,6 +5,10 @@ const coffeeSchema = mongoose.Schema({
   name: String,
   volume: Number,
   description: String,
+  sugar: {
+    type: Number,
+    required: false
+  },
   price: Number,
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,

@@ -2,12 +2,13 @@ const Coffee = require("../Models/Coffee.model")
 
 module.exports.coffeeController = {
   addCoffee: async (req, res) => {
-    const { image, name, volume, description, price, categoryId } = req.body
+    const { image, name, volume, description, price, categoryId, sugar } = req.body
     try {
       const coffee = await Coffee.create({
         image,
         name,
         volume,
+        sugar,
         description,
         price,
         categoryId

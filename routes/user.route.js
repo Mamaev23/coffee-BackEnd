@@ -10,5 +10,6 @@ router.post("/users", [
   check("password", "пароль должен быть минимум 5 символов и максимум 10 символов").isLength({min: 5, max: 10})
 ], usersController.registration)
 router.post("/login", usersController.login)
+router.patch("/addCoffeeToCart", middleware, usersController.addCoffeeToCart)
 
 module.exports = router

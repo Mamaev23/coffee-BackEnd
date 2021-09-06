@@ -32,12 +32,13 @@ module.exports.usersController = {
 
   //проверка зареган ли пользователь
   login: async (req, res) => {
+
     const { login, password } = req.body;
     const candidate = await User.findOne({ login });
     if (!candidate) {
       return res.status(401).json("Неверный логин");
     }
-    const valid = bcrypt.compare(password, candidate.password);
+    const valid = await bcrypt.compare(password, candidate.password);
     if (!valid) {
       return res.status(401).json("Неверный пароль");
     }
@@ -51,4 +52,21 @@ module.exports.usersController = {
 
     res.json(token);
   },
+
+//добавление кофе в корзину пользователя
+
+  addCoffeeToCart: async (req, res) => {
+
+    try {
+      const { coffeeId } = req.body
+      const user = req.user.id
+
+      await User.findByIdAndUpdate(user, {$push: {coffeeId}})
+      res.status(200).json("Добавлено в корзину...")
+
+
+    } catch (e) {
+      res.status(401).json("Ошибка при добавлении в корзину пользователя")
+    }
+  }
 };
