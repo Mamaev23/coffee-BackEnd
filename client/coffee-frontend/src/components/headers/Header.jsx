@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import "../styles/style.css"
-import Category from './Category'
-import PhotoCarousel from './PhotoCarousel'
 import Modals from '../modals/Modals'
 
 
@@ -39,8 +37,6 @@ function Header () {
           </button>
         </div>
       </div>
-      <Category/>
-      <PhotoCarousel/>
       <Modals active={modalActive} setActive={setModalActive}>
         <h1 className={"cart__title"}>Корзина</h1>
         <div className="cart__content">

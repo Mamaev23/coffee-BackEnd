@@ -3,20 +3,26 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { store } from '../redux/configureStore'
 import Footer from './footer/Footer';
 import Header from './headers/Header'
+import Category from './headers/Category';
+import PhotoCarousel from './headers/PhotoCarousel';
+import CoffeesPage from './page/CoffeesPage';
+
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Provider store={store}>
         <Header/>
         <BrowserRouter>
           <Switch>
             <Route path="/">
-
+              <Category/>
+              <PhotoCarousel/>
               <Footer/>
-
-
+            </Route>
+            <Route path="/coffees">
+              <CoffeesPage/>
             </Route>
           </Switch>
         </BrowserRouter>
