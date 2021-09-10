@@ -20,6 +20,13 @@ const useStyles = makeStyles({
     color: 'white',
     fontSize: 20,
   },
+  container: {
+    justifyContent: "space-between",
+    alignItems: 'center'
+  },
+  main: {
+    paddingTop: '10px',
+  },
   icons: {
     fontSize: 40,
     color: "wheat",
@@ -34,21 +41,17 @@ const Footer = () => {
 
   return (
     <Box className={classes.box}>
-      <Container>
-        <Grid container>
+      <Container className={classes.main} >
+        <Grid container className={classes.container}>
           <Grid item xs={3}>
             <div className={classes.shrift}>CAFFEE ©2021</div>
             <br/>
             <div><Link className={classes.shrift}>О нас</Link></div>
           </Grid>
-          <Grid item xs={3}>
-            2222
-          </Grid>
           <Grid item xs={3} className={classes.shrift}>
             <div>Услуги</div>
             <br/>
             <div>Доставка</div>
-            <div>Самовызов</div>
             <div>Поддержка</div>
           </Grid>
           <Grid item xs={3} >

@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="container">
       <Provider store={store}>
+        {/*<Cart />*/}
         <Header/>
         <BrowserRouter>
           <Switch>
