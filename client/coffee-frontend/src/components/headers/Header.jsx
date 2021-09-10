@@ -16,7 +16,7 @@ function Header () {
           </div>
         </div>
         <div className="header__button">
-          <a href="#" className={"user"}>
+          <a href="#" className={"user"} onClick={() => setModalActive(true)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                  className="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -32,21 +32,28 @@ function Header () {
               <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
             </svg>
           </button>
-          <button className="cart" onClick={() => setModalActive(true)}>
-            <a to={"/user/cart"} className={"cart__link"}>Корзина</a>
-          </button>
         </div>
       </div>
       <Modals active={modalActive} setActive={setModalActive}>
-        <h1 className={"cart__title"}>Корзина</h1>
-        <div className="cart__content">
-          <div className="cart__img__block">
-            <img className={"cart__image"} src="#" alt=""/>
+        <form>
+          <div className="mb-8">
+            <label htmlFor="exampleInputEmail1" className="form-label">Login</label>
+            <input type="email" className="form-control" id="exampleInputEmail1"
+                   aria-describedby="emailHelp"/>
+              <div id="emailHelp" className="form-text">We'll never share your email with anyone
+                else.
+              </div>
           </div>
-          <div className="cart__content__desc">
-            <h2 className="cart__content__title"></h2>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+            <input type="password" className="form-control" id="exampleInputPassword1"/>
           </div>
-        </div>
+          <div className="mb-3 form-check">
+            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+              <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
       </Modals>
     </div>
   )
