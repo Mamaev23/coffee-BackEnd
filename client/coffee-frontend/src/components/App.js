@@ -8,19 +8,22 @@ import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeesPage from './page/CoffeesPage';
 
 
+
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Provider store={store}>
         {/*<Cart />*/}
         <Header/>
         <BrowserRouter>
           <Switch>
             <Route path="/">
-
+              <Category/>
+              <PhotoCarousel/>
               <Footer/>
-
-
+            </Route>
+            <Route path="/coffees">
+              <CoffeesPage/>
             </Route>
           </Switch>
         </BrowserRouter>
