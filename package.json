@@ -1,7 +1,6 @@
 {
   "name": "coffeesoul",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +20,14 @@
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.12",
     "prettier": "^2.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MamakaevRakhim/coffee-BackEnd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MamakaevRakhim/coffee-BackEnd/issues"
+  },
+  "homepage": "https://github.com/MamakaevRakhim/coffee-BackEnd#readme",
+  "description": ""
 }
