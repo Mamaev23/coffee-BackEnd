@@ -6,8 +6,11 @@ const cors = require('cors')
 const app = express()
 
 app.use(express.json())
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:3000"
+}))
 app.use(require("./routes/index"))
-app.use(cors())
 
 
 mongoose.connect(process.env.MONGO_PORT)

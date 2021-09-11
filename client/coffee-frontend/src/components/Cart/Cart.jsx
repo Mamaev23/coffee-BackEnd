@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
@@ -12,6 +11,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadingCoffee } from '../../redux/features/Coffe';
 
 const useStyles = makeStyles({
   root: {
@@ -124,63 +125,94 @@ const Cart = () => {
 
   const [opened, setOpened] = useState(false);
   const classes = useStyles()
+  //=========================НЕТРОГАТЬ==========================================
+
+  const { loadCoffee, loadPage } = useSelector(state => state.coffee)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadingCoffee())
+  }, [])
+
+  //localState to search
+  const [value, setValue] = useState("")
+  const fltr = loadCoffee.filter((item) => {
+    return item.name.toLowerCase().includes(value.toLowerCase())
+  })
+
+  if(loadPage) {
+    return (
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    )
+  }
+  //===========================НЕТРОГАТЬ=============================================
+
 
   return (
     <div className={classes.main1}>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <img src="https://i.postimg.cc/9frGC41h/1.png" className={classes.media} />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Копучино
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Капучино — самый известный кофейный напиток на основе эспрессо.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions className={classes.buy1}>
-          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Купить
-          </Button>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title" className={classes.title}>{"Оформление заказа"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description" className={classes.main}>
-                <div>
-                <img className={classes.image} src="https://i.postimg.cc/9frGC41h/1.png"/>
-                  <div className={classes.countered}>
-                    <button className={classes.buttons1} onClick={minus}>-</button>
-                    {counter}
-                    <button className={classes.buttons1} onClick={plus}>+</button>
-                  </div>
-                </div>
+      <input type="text" className={"inputSearch"} onChange={(e) => setValue(e.target.value)}/>
+      {fltr.map((item) => {
+        return (
+          <Card className={classes.root}>
+            <CardActionArea>
+              <img src={item.image} className={classes.media} />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {item.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  jgbcf
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions className={classes.buy1}>
+              <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                Купить
+              </Button>
+
+              {/*====================================================================*/}
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title" className={classes.title}>{"Оформление заказа"}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description" className={classes.main}>
+                    <div>
+                      <img className={classes.image} src={item.image}/>
+                      <div className={classes.countered}>
+                        <button className={classes.buttons1} onClick={minus}>-</button>
+                        {counter}
+                        <button className={classes.buttons1} onClick={plus}>+</button>
+                      </div>
+                    </div>
+                    <DialogActions>
+                    </DialogActions>
+                    <div className={classes.description}>
+                      <h2 className={classes.name}>{item.name}</h2>
+                      <h4 className={classes.descript}> - 3кг сахара</h4>
+                      <h4 className={classes.descript}> - {item.volume}мл</h4>
+                      <h4 className={classes.descript}> - 40г кокоина</h4>
+                    </div>
+                  </DialogContentText>
+                </DialogContent>
                 <DialogActions>
+                  <div className={classes.buttons}>
+                    <h3 className={classes.price}>{sum}$</h3>
+                    <Button variant="contained" color="primary" className={classes.buy}>
+                      Купить
+                    </Button>
+                  </div>
                 </DialogActions>
-                <div className={classes.description}>
-                  <h2 className={classes.name}>Капучино</h2>
-                  <h4 className={classes.descript}> - 3кг сахара</h4>
-                  <h4 className={classes.descript}> - 200мг</h4>
-                  <h4 className={classes.descript}> - 40г кокоина</h4>
-                </div>
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <div className={classes.buttons}>
-                <h3 className={classes.price}>{sum}$</h3>
-                <Button variant="contained" color="primary" className={classes.buy}>
-                  Купить
-                </Button>
-              </div>
-            </DialogActions>
-          </Dialog>
-        </CardActions>
-      </Card>
+              </Dialog>
+            </CardActions>
+          </Card>
+        )
+      })}
     </div>
   );
 };

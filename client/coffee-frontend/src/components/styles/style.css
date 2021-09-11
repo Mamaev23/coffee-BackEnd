@@ -64,12 +64,12 @@ a {
 }
 .category {
     padding: 5px;
+    color: black;
     border: 1px solid #cccccc;
     border-radius: 10px;
     font-family: 'Besley', serif;
     font-size: 18px;
     margin: 10px;
-    cursor: pointer;
 }
 .category:hover {
     background-color: #cfcaca;
@@ -129,11 +129,28 @@ a {
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    height: 700px;
-    width: 1000px;
+    height: 300px;
+    width: 600px;
     transform: scale(0.5);
     transition: .4s all;
 }
 .modal__content.active {
     transform: scale(1);
+}
+
+
+.inputSearch {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 20px;
+
+}
+.byCategory {
+    display: flex;
+    flex-wrap: wrap;
+}
+.byCategoryMrg {
+    margin-bottom: 40px;
 }

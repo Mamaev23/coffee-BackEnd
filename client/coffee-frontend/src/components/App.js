@@ -7,7 +7,13 @@ import Category from './headers/Category';
 import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeesPage from './page/CoffeesPage';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+
+>>>>>>> main
+=======
+import Cart from './Cart/Cart';
+import CityPage from './page/CityPage';
 
 >>>>>>> main
 
@@ -16,17 +22,20 @@ function App() {
   return (
     <div className="container">
       <Provider store={store}>
-        {/*<Cart />*/}
         <Header/>
         <BrowserRouter>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <Category/>
               <PhotoCarousel/>
+              <Cart />
               <Footer/>
             </Route>
-            <Route path="/coffees">
+            <Route path="/category/:id">
               <CoffeesPage/>
+            </Route>
+            <Route path="/changed/cities">
+              <CityPage/>
             </Route>
           </Switch>
         </BrowserRouter>
