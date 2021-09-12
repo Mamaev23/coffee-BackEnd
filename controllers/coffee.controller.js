@@ -63,4 +63,14 @@ module.exports.coffeeController = {
       .json({error: "Ошибка при удалении: " + e.toString() })
     }
   },
+
+//get random coffee
+  getRandomCoffee: async (req, res) => {
+    try {
+      const randomCoffee = await Coffee.aggregate([{ $sample: {size: 4} }])
+      res.json(randomCoffee)
+    } catch (e) {
+      res.json({error: "Ошибка при выводе рандомного кофе"})
+    }
+  }
 }
