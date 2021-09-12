@@ -17,7 +17,8 @@ import { loadingCoffee } from '../../redux/features/Coffe';
 const useStyles = makeStyles({
   root: {
     maxWidth: 250,
-    maxHeight:290
+    maxHeight:290,
+    margin: 30
   },
   media: {
     height: 110,
@@ -27,7 +28,9 @@ const useStyles = makeStyles({
     display: 'grid'
   },
   main1: {
-    padding: 30
+    padding: 30,
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   main:{
 
@@ -98,7 +101,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Cart = () => {
+const Cards = () => {
   const [sum, setSum] = useState(15)
   const [counter, setCounter] = useState(1)
 
@@ -127,18 +130,12 @@ const Cart = () => {
   const classes = useStyles()
   //=========================НЕТРОГАТЬ==========================================
 
-  const { loadCoffee, loadPage } = useSelector(state => state.coffee)
+  const { loadCoffee, loadPage } = useSelector(state => state.coffee);
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(loadingCoffee())
   }, [])
-
-  //localState to search
-  const [value, setValue] = useState("")
-  const fltr = loadCoffee.filter((item) => {
-    return item.name.toLowerCase().includes(value.toLowerCase())
-  })
 
   if(loadPage) {
     return (
@@ -152,8 +149,8 @@ const Cart = () => {
 
   return (
     <div className={classes.main1}>
-      <input type="text" className={"inputSearch"} onChange={(e) => setValue(e.target.value)}/>
-      {fltr.map((item) => {
+
+      {loadCoffee.map((item) => {
         return (
           <Card className={classes.root}>
             <CardActionArea>
@@ -217,4 +214,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Cards;
