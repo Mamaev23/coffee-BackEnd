@@ -1,61 +1,152 @@
-import React, { useState } from 'react'
-import "../styles/style.css"
-import Modals from '../modals/Modals'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Cart from '../Carts/Cart';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadingCategory } from '../../redux/features/Coffe';
 
 
+const useStyles = makeStyles({
+  main: {
+    width: 1296,
+    backgroundColor:'#ffffffe3',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent:"space-between",
+    paddingTop: 15,
+    paddingBottom:15,
+    boxSizing: 'border-box',
+  },
+nav:{
+  width: '100%',
+  color: 'black',
+  textDecoration: 'none',
+  display:'block',
+  "&:hover":{
+    color: 'black'
+  }
+},
+nav1:{
+    width: '100%',
+  color: 'black',
+  textDecoration: 'none',
+  display:'block',
+  padding: '4px 16px',
+  "&:hover":{
+    backgroundColor: '#0000000a',
+    color: 'black'
+  }
+},
+  logo:{
+    width:65,
+  },
+  bar: {
+    width: 450,
+    display: 'flex',
+    paddingTop: 15,
+    justifyContent:"space-between",
+    alignItems: "center"
+  },
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: 'theme.palette.background.paper',
+  },
+  nested: {
+    display:'block',
+    padding: '8px 0px',
+    paddingLeft: 'theme.spacing(4)',
+    backgroundColor: 'white',
+    color: 'white',
+    position: 'absolute',
+    zIndex: 2,
+    borderRadius: '0px 0px 5px 5px',
+    "&:hover":{
+      backgroundColor: 'white'
+    }
+  },
+  category1:{
+    borderRadius: '65px 5px',
+  },
+  iconLink:{
+    border: 'none',
+    outline:'none',
+    backgroundColor: '#faf3d200',
+    width: '100%',
+    color: 'black',
+    textDecoration: 'none',
+    display:'block',
+    padding:5,
+    "&:active": {
+      transition: 0.3,
+      borderRadius: 50,
+      backgroundColor: '#f1f1f1'
+    }
+  }
+
+})
 
 function Header () {
+  const { loadCategory } = useSelector(state => state.coffee)
+  const dispatch = useDispatch()
 
-  const [modalActive, setModalActive] = useState()
+
+  useEffect(() => {
+    dispatch(loadingCategory())
+  }, [])
+
+
+
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  }
+
   return (
-    <div className={"container"}>
-      <div className="header">
-        <div className={"logo-desc"}>
-          <div className="header__desc">
-            <h5 className="desc">Доставка кофе</h5>
-          </div>
-        </div>
-        <div className="header__button">
-          <a href="#" className={"user"} onClick={() => setModalActive(true)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                 className="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd"
-                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg>
+   <div className={classes.main}>
+     <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
+      <div className={classes.bar}>
+        <ListItem button  className={classes.category1}>
+          <a href="/"  className={classes.nav}>
+          <ListItemText primary="Главная" />
           </a>
-          <button className={"buttons mrgn"}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-compass"
-                 viewBox="0 0 16 16">
-              <path
-                d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-              <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
-            </svg>
-          </button>
+        </ListItem>
+          <ListItem button  className={classes.category1}>
+            <a href="" className={classes.nav}>
+            <ListItemText primary="Контакты" />
+            </a>
+          </ListItem>
+        <div>
+        <ListItem button onClick={handleClick} className={classes.category1}>
+          <ListItemText primary="Категория" />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem button className={classes.nested}>
+              {loadCategory.map((item) => {
+                return (
+                  <Link to={`/category/${item._id}`} style={{color: "red"}}>{item.name}</Link>
+                )
+              })}
+            </ListItem>
+          </List>
+        </Collapse>
         </div>
-      </div>
-      <Modals active={modalActive} setActive={setModalActive}>
-        <form>
-          <div className="mb-8">
-            <label htmlFor="exampleInputEmail1" className="form-label">Login</label>
-            <input type="email" className="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp"/>
-              <div id="emailHelp" className="form-text">We'll never share your email with anyone
-                else.
-              </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1"/>
-          </div>
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-              <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-      </Modals>
-    </div>
+      <Cart />
+        <Link to="/authorization">
+          <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
+        </Link>
+   </div>
+   </div>
   )
 }
 

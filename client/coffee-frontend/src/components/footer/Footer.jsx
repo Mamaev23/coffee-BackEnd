@@ -10,8 +10,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 const useStyles = makeStyles({
   box: {
-    backgroundColor: "grey",
-    height: 150
+    backgroundColor: "black",
   },
   flex: {
     display: "flex"
@@ -34,6 +33,10 @@ const useStyles = makeStyles({
       color: "red"
     },
   },
+  logo:{
+    width:65,
+    fontcolor: 'white'
+  },
 });
 
 const Footer = () => {
@@ -45,14 +48,9 @@ const Footer = () => {
         <Grid container className={classes.container}>
           <Grid item xs={3}>
             <div className={classes.shrift}>CAFFEE ©2021</div>
-            <br/>
-            <div><Link className={classes.shrift}>О нас</Link></div>
           </Grid>
           <Grid item xs={3} className={classes.shrift}>
-            <div>Услуги</div>
-            <br/>
-            <div>Доставка</div>
-            <div>Поддержка</div>
+            <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
           </Grid>
           <Grid item xs={3} >
             <Grid container>
