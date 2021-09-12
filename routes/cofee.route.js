@@ -8,5 +8,6 @@ router.get("/coffee", coffeeController.getCoffee)//работает
 router.get("/category/:id", coffeeController.getCoffeeCategory)//работает
 router.get("/coffee/:id", coffeeController.getCoffeeId)//работает
 router.delete("/coffee/:id", coffeeController.deleteCoffee)//работает
+router.get("/randomCoffee", coffeeController.getRandomCoffee)//работает
 
 module.exports = router

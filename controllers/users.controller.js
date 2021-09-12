@@ -12,19 +12,31 @@ module.exports.usersController = {
       return res.status(400).json("Ошибка при регистрации (validationResult)");
     }
 
-    const { name, login, password, coffeeId } = req.body;
+    const { firstName, lastName, login, password, coffeeId } = req.body;
     try {
       const hash = await bcrypt.hash(
         password,
         Number(process.env.BCRYPT_ROUNDS)
       );
-      const user = await User.create({
-        name,
+      await User.create({
+        firstName,
+        lastName,
         login,
         coffeeId,
         password: hash,
       });
-      res.status(200).json(user);
+
+      const payload = {
+        firstName,
+        lastName,
+        login
+      };
+      const token = await jwt.sign(payload, process.env.SECRET_JWT_KEY, {
+        expiresIn: "24h"
+      });
+
+
+      res.status(200).json(token);
     } catch (e) {
       res.status(401).json("ошибка при добавлении пользователя");
     }
