@@ -3,19 +3,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { store } from '../redux/configureStore'
 import Footer from './footer/Footer';
 import Header from './headers/Header'
-import Category from './headers/Category';
 import PhotoCarousel from './headers/PhotoCarousel';
-import CoffeesPage from './page/CoffeesPage';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+import CoffeePageByCategory from './page/CoffeePageByCategory';
+import SignUp from './Sign/SignUp';
+import Main from './main/Main';
 
->>>>>>> main
-=======
-import Cart from './Cart/Cart';
-import CityPage from './page/CityPage';
 
->>>>>>> main
 
 
 function App() {
@@ -23,22 +16,19 @@ function App() {
     <div className="container">
       <Provider store={store}>
         <Header/>
-        <BrowserRouter>
           <Switch>
             <Route exact path="/">
-              <Category/>
               <PhotoCarousel/>
-              <Cart />
+              <Main />
               <Footer/>
             </Route>
             <Route path="/category/:id">
-              <CoffeesPage/>
+              <CoffeePageByCategory/>
             </Route>
-            <Route path="/changed/cities">
-              <CityPage/>
+            <Route path="/authorization">
+              <SignUp/>
             </Route>
           </Switch>
-        </BrowserRouter>
       </Provider>
     </div>
   );
