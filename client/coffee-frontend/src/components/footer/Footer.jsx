@@ -1,17 +1,18 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Container, Grid, Link } from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TelegramIcon from  "@material-ui/icons/Telegram"
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import {Link} from "react-router-dom"
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 
 const useStyles = makeStyles({
   box: {
     backgroundColor: "grey",
-    height: 150
+    height: 80
   },
   flex: {
     display: "flex"
@@ -19,21 +20,19 @@ const useStyles = makeStyles({
   shrift: {
     color: 'white',
     fontSize: 20,
-  },
-  container: {
-    justifyContent: "space-between",
-    alignItems: 'center'
-  },
-  main: {
-    paddingTop: '10px',
+    textDecoration: 'none'
   },
   icons: {
     fontSize: 40,
     color: "wheat",
     "&:hover": {
-      color: "red"
+      color: "red",
+
     },
   },
+  pust: {
+    marginTop: 10
+  }
 });
 
 const Footer = () => {
@@ -41,20 +40,19 @@ const Footer = () => {
 
   return (
     <Box className={classes.box}>
-      <Container className={classes.main} >
-        <Grid container className={classes.container}>
-          <Grid item xs={3}>
-            <div className={classes.shrift}>CAFFEE ©2021</div>
-            <br/>
+      <Container>
+        <Grid container>
+          <Grid item xs={2}>
             <div><Link className={classes.shrift}>О нас</Link></div>
+            <div><Link className={classes.shrift}>Поддержка</Link></div>
           </Grid>
-          <Grid item xs={3} className={classes.shrift}>
-            <div>Услуги</div>
-            <br/>
-            <div>Доставка</div>
-            <div>Поддержка</div>
+          <Grid item xs={4} className={classes.shrift}>
+            <div><Link className={classes.shrift}>Доставка</Link></div>
+            <div><Link className={classes.shrift}>Самовызов</Link></div>
           </Grid>
-          <Grid item xs={3} >
+          <Grid item  xs={4}/>
+          <Grid item xs={2} spacing="flex-end" >
+            <div className={classes.pust}></div>
             <Grid container>
               <div><Link href="https://www.instagram.com/myxammad.13/" target="_blank" >{<InstagramIcon className={classes.icons}/>}</Link></div>
               <div><Link href="https://www.facebook.com/coffee" target="_blank" className={classes.shrift}>{<FacebookIcon className={classes.icons}/>}</Link></div>

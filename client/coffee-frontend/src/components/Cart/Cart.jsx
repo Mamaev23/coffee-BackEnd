@@ -163,7 +163,7 @@ const Cart = () => {
                   {item.name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  jgbcf
+                  ascad
                 </Typography>
               </CardContent>
             </CardActionArea>

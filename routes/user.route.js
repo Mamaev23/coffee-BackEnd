@@ -7,7 +7,7 @@ const router = Router()
 
 router.post("/users", [
   check("login", "Логин должен быть").notEmpty(),
-  check("password", "пароль должен быть минимум 5 символов и максимум 10 символов").isLength({min: 5, max: 10})
+  check("password", "пароль должен быть минимум 5 символов и максимум 16 символов").isLength({min: 5, max: 16})
 ], usersController.registration)
 router.post("/login", usersController.login)
 router.patch("/addCoffeeToCart", middleware, usersController.addCoffeeToCart)
