@@ -1,11 +1,22 @@
 const initialState = {
   user: {},
   token: localStorage.getItem("token"),
-  isAuth: false
+  error: null
 }
 
 export default function authReducer (state = initialState, action) {
   switch (action.type) {
+    case "load/errorData/rejected":
+      return {
+        ...state,
+        error: action.error.obj.err
+      }
+    case "load/userData/pending":
+      return {
+        ...state,
+        user: action.payload.obj.newUser,
+        token: action.payload.obj.token,
+      }
     default:
       return state
   }
@@ -40,8 +51,13 @@ export const loadingUserData = (firstName, lastName, login, password) => {
       }
     })
     .then((res) => res.json())
-    .then((token) => {
-      localStorage.setItem("token", token)
+    .then((obj) => {
+      if(!obj.error) {
+        dispatch({type: "load/userData/pending", payload: { obj }})
+        localStorage.setItem("token", obj.token)
+      }else {
+        dispatch({type: "load/errorData/rejected", error: { obj }})
+      }
     })
   }
 }

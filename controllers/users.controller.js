@@ -8,17 +8,22 @@ module.exports.usersController = {
   registration: async (req, res) => {
     const errors = validationResult(req);
 
+
     if (!errors.isEmpty()) {
       return res.status(400).json("Ошибка при регистрации (validationResult)");
     }
 
     const { firstName, lastName, login, password, coffeeId } = req.body;
     try {
+      const candidate = await User.findOne({login})
+      if(candidate) {
+        return res.status(401).json({ error: 'карар яла, логин занят' })
+      }
       const hash = await bcrypt.hash(
         password,
         Number(process.env.BCRYPT_ROUNDS)
       );
-      await User.create({
+      const newUser = await User.create({
         firstName,
         lastName,
         login,
@@ -36,7 +41,7 @@ module.exports.usersController = {
       });
 
 
-      res.status(200).json(token);
+      res.status(200).json({ newUser, token });
     } catch (e) {
       res.status(401).json("ошибка при добавлении пользователя");
     }
