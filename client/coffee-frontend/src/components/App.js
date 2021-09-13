@@ -1,4 +1,4 @@
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { store } from '../redux/configureStore'
 import Footer from './footer/Footer';
@@ -7,8 +7,6 @@ import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeePageByCategory from './page/CoffeePageByCategory';
 import SignUp from './Sign/SignUp';
 import Main from './main/Main';
-
-
 
 
 function App() {
@@ -20,13 +18,15 @@ function App() {
             <Route exact path="/">
               <PhotoCarousel/>
               <Main />
-              <Footer/>
+              {/*<Footer/>*/}
             </Route>
             <Route path="/category/:id">
               <CoffeePageByCategory/>
             </Route>
             <Route path="/authorization">
               <SignUp/>
+            </Route>
+            <Route path='/coffee/:id}'>
             </Route>
           </Switch>
       </Provider>

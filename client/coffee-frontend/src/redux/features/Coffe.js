@@ -47,7 +47,7 @@ export const loadingCategory = () => {
 
 export const loadingCoffee = () => {
   return (dispatch) => {
-    fetch("http://localhost:4000/coffee/?_limit=4")
+    fetch("http://localhost:4000/coffee")
     .then((res) => res.json())
     .then((data) => {
       dispatch({type: "load/coffee/pending", payload: { data }})
@@ -65,4 +65,3 @@ export const loadCoffeeById = (id) => {
     })
   }
 }
-

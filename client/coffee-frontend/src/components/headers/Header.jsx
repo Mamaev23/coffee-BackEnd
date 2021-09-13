@@ -59,7 +59,7 @@ nav1:{
     backgroundColor: 'theme.palette.background.paper',
   },
   nested: {
-    display:'block',
+    display:'grid',
     padding: '8px 0px',
     paddingLeft: 'theme.spacing(4)',
     backgroundColor: 'white',
@@ -88,11 +88,17 @@ nav1:{
       borderRadius: 50,
       backgroundColor: '#f1f1f1'
     }
+  },
+  navCategory: {
+    color: 'black',
+    textDecoration: 'none',
+    paddingTop:10
   }
 
 })
 
 function Header () {
+  const { user, token } = useSelector(state => state.authReducer)
   const { loadCategory } = useSelector(state => state.coffee)
   const dispatch = useDispatch()
 
@@ -110,11 +116,14 @@ function Header () {
     setOpen(!open);
   }
 
+
+
   return (
    <div className={classes.main}>
      <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
       <div className={classes.bar}>
         <ListItem button  className={classes.category1}>
+          {token ? <a href="#">{user.name}</a> : null}
           <a href="/"  className={classes.nav}>
           <ListItemText primary="Главная" />
           </a>
@@ -134,7 +143,7 @@ function Header () {
             <ListItem button className={classes.nested}>
               {loadCategory.map((item) => {
                 return (
-                  <Link to={`/category/${item._id}`} style={{color: "red"}}>{item.name}</Link>
+                  <Link to={`/category/${item._id}`} className={classes.navCategory}>{item.name}</Link>
                 )
               })}
             </ListItem>
