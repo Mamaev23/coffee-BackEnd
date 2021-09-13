@@ -11,5 +11,6 @@ router.post("/users", [
 ], usersController.registration)
 router.post("/login", usersController.login)
 router.patch("/addCoffeeToCart", middleware, usersController.addCoffeeToCart)
+router.get("/user/:id", usersController.getUser)
 
 module.exports = router

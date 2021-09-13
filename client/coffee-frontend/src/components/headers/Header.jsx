@@ -7,9 +7,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import Cart from '../Carts/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadingCategory } from '../../redux/features/Coffe';
+import BasketIcon from '../basket/BasketIcon';
 
 
 const useStyles = makeStyles({
@@ -141,7 +141,7 @@ function Header () {
           </List>
         </Collapse>
         </div>
-      <Cart />
+      <BasketIcon />
         <Link to="/authorization">
           <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
         </Link>

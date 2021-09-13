@@ -61,12 +61,25 @@ module.exports.usersController = {
       const { coffeeId } = req.body
       const user = req.user.id
 
-      await User.findByIdAndUpdate(user, {$push: {coffeeId}})
-      res.status(200).json("Добавлено в корзину...")
+      const cart = await User.findByIdAndUpdate(user, {$addToSet: {coffeeId}}, { new: true })
+      res.status(200).json(cart)
 
 
     } catch (e) {
       res.status(401).json("Ошибка при добавлении в корзину пользователя")
+    }
+  },
+
+  getUser: async (req, res) => {
+    try {
+      const { id } = req.params
+
+      const user = await User.findById(id).populate('coffeeId')
+      res.json(user)
+    } catch (e) {
+      res
+      .status(400)
+      .json({error: "Ошибка: " + e.toString() })
     }
   }
 };
