@@ -9,8 +9,6 @@ import SignUp from './Sign/SignUp';
 import Main from './main/Main';
 
 
-
-
 function App() {
   return (
     <div className="container">
@@ -20,13 +18,15 @@ function App() {
             <Route exact path="/">
               <PhotoCarousel/>
               <Main />
-              <Footer/>
+              {/*<Footer/>*/}
             </Route>
             <Route path="/category/:id">
               <CoffeePageByCategory/>
             </Route>
             <Route path="/authorization">
               <SignUp/>
+            </Route>
+            <Route path='/coffee/:id}'>
             </Route>
           </Switch>
       </Provider>

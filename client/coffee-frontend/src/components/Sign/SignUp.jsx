@@ -91,7 +91,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Login / Email"
                 name="email"
                 autoComplete="email"
               />
