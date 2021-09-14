@@ -113,7 +113,7 @@ export default function SignIn() {
               className={classes.submit}
               onClick={() => dispatch(doLogin(login, password))}
             >
-              <a href="/">Sign Up</a>
+              <a href="/">SIGN UP</a>
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
