@@ -11,6 +11,9 @@ import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 const useStyles = makeStyles({
   box: {
+    backgroundColor: "#ececee",
+    borderRadius: '30px 30px 0px 0px',
+
     height: 80,
     backgroundColor: "black",
   },
@@ -18,13 +21,13 @@ const useStyles = makeStyles({
     display: "flex"
   },
   shrift: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
     textDecoration: 'none'
   },
   icons: {
     fontSize: 40,
-    color: "wheat",
+    color: "darkred",
     "&:hover": {
       color: "red",
 
@@ -47,10 +50,7 @@ const Footer = () => {
       <Container className={classes.main} >
         <Grid container className={classes.container}>
           <Grid item xs={3}>
-            <div className={classes.shrift}>CAFFEE ©2021</div>
-          </Grid>
-          <Grid item xs={3} className={classes.shrift}>
-            <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
+            <div className={classes.shrift}>COFFEE ©2021</div>
           </Grid>
           <Grid item xs={3} >
             <Grid container>
