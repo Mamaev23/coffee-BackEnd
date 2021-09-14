@@ -6,7 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CardId from './Card';
+import CardId from './CardId';
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -150,10 +150,6 @@ const Cards = () => {
                 <Typography gutterBottom variant="h6" component="h2">
                   {item.name}
                 </Typography>
-<<<<<<< HEAD
-                <Typography variant="body2" color="textSecondary" component="p">
-                  ascad
-=======
                 <Typography
                   noWrap
                   variant="body2"
@@ -161,7 +157,6 @@ const Cards = () => {
                   component="p"
                 >
                   {item.description}
->>>>>>> main
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -185,6 +180,7 @@ const Cards = () => {
           description={coffee.description}
           image={coffee.image}
           volume={coffee.volume}
+          id={coffee._id}
         />
       ) : (
         ""

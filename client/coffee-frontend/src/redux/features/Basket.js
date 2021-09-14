@@ -1,6 +1,10 @@
+import coffee from './Coffe';
+
 const initialState = {
   loadCoffee: [],
-  coffee: [],
+  coffee: [
+    {id: 1, coffeeId: 2, amount: 1}
+  ],
   userById: []
 }
 
@@ -14,9 +18,15 @@ switch (action.type) {
   case "add/coffee/fulfilled":
     return {
       ...state,
-      coffee: action.payload.data,
+      coffee: [
+        ...state.coffee,
+        {
+          id: state.coffee.length + 1,
+          coffeeId: action.id,
+          amount: 1,
+        },
+      ],
     }
-
   case "get/basket/fulfilled":
     return {
       ...state,
@@ -33,10 +43,15 @@ switch (action.type) {
     return state
 }
 }
-export const addCoffeeToCart = () => {
+export const addCoffeeToCart = (id) => {
+  console.log(id)
   return ( dispatch ) => {
-    fetch("http://localhost:4000/addCoffeeToCart", {
-      method: "PATCH"
+    fetch(`http://localhost:4000/addCoffeeToCart/613e0a0725b12bced5b7da32`, {
+      method: "PATCH",
+      body: JSON.stringify({coffeeId: id}),
+      headers: {
+        "Content-type": "application/json",
+      },
     })
     .then((res) => res.json())
     .then((data) => {

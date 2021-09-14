@@ -75,10 +75,12 @@ module.exports.usersController = {
   addCoffeeToCart: async (req, res) => {
 
     try {
-      const { coffeeId } = req.body
-      const user = req.user.id
+      const  data  = req.body
+      console.log(data)
+       const {id} = req.params
 
-      const cart = await User.findByIdAndUpdate(user, {$addToSet: {coffeeId}}, { new: true })
+      const cart = await User.findByIdAndUpdate(id,
+        {$addToSet: {coffeeId: data.coffeeId}}, { new: true })
       res.status(200).json(cart)
 
 
