@@ -1,3 +1,5 @@
+import { stripLow } from 'validator';
+
 const initialState = {
   loadCoffee: [],
   coffee: [
@@ -49,7 +51,7 @@ switch (action.type) {
 }
 export const addCoffeeToCart = (id) => {
   return ( dispatch ) => {
-    fetch(`http://localhost:4000/addCoffeeToCart/613e0a0725b12bced5b7da32`, {
+    fetch(`http://localhost:4000/addCoffeeToCart/${id}`, {
       method: "PATCH",
       body: JSON.stringify({coffeeId: id}),
       headers: {

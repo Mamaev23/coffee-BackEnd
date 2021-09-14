@@ -15,7 +15,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { loadingCoffee } from "../../redux/features/Coffe";
 import { useParams } from "react-router-dom";
-import { loadUserById } from '../../redux/features/Basket';
+import { addCoffeeToCart, loadUserById } from '../../redux/features/Basket';
 
 
 
@@ -129,6 +129,11 @@ const Cards = () => {
 
   const { id } = useParams();
 
+  const handleAddCoffee = (id) => {
+    dispatch(addCoffeeToCart(id));
+  }
+
+
   useEffect(() => {
     dispatch(loadingCoffee(id));
   }, [id]);
@@ -171,6 +176,9 @@ const Cards = () => {
               <Button
                 variant="outlined"
                 color="primary"
+                onClick={() => {
+                handleAddCoffee(id);
+              }}
               >
                 Купить
               </Button>

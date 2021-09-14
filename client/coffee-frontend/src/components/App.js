@@ -1,5 +1,3 @@
-import { Provider, useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { store } from '../redux/configureStore'
