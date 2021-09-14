@@ -1,5 +1,5 @@
-import { Provider } from 'react-redux'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Provider, useSelector } from 'react-redux'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { store } from '../redux/configureStore'
 import Footer from './footer/Footer';
 import Header from './headers/Header'
@@ -8,9 +8,11 @@ import CoffeePageByCategory from './page/CoffeePageByCategory';
 import SignUp from './Sign/SignUp';
 import Main from './main/Main';
 import Contact from './contacts/contact';
+import SignIn from './Sign/SignIn';
 
 
 function App() {
+
   return (
     <div className="container">
       <Provider store={store}>
@@ -30,7 +32,8 @@ function App() {
             <Route path="/contacts">
               <Contact />
             </Route>
-            <Route path='/coffee/:id}'>
+            <Route path="/login">
+              <SignIn/>
             </Route>
           </Switch>
       </Provider>

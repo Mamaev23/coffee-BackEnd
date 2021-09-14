@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadingUserData } from '../../redux/features/Auth';
+import { Redirect } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -48,6 +51,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const dispatch = useDispatch()
+
+
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [login, setLogin] = useState("")
+  const [password, setPassword] = useState("")
+
+
+
 
   return (
     <>
@@ -60,7 +73,8 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={(e) => e.preventDefault()}
+              className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -72,6 +86,8 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={(e) => setFirstName(e.target.value)}
+
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -83,6 +99,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={(e) => setLastName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -94,6 +111,7 @@ export default function SignUp() {
                 label="Login / Email"
                 name="email"
                 autoComplete="email"
+                onChange={(e) => setLogin(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -106,6 +124,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -116,13 +135,13 @@ export default function SignUp() {
             </Grid>
           </Grid>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => dispatch(loadingUserData(firstName, lastName, login, password))}
           >
-            Sign Up
+            <a href="/">Sign Up</a>
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>

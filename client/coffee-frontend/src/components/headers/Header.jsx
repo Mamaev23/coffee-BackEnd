@@ -101,6 +101,8 @@ function Header () {
   const dispatch = useDispatch()
 
 
+
+
   useEffect(() => {
     dispatch(loadingCategory())
   }, [])
@@ -113,6 +115,8 @@ function Header () {
   const handleClick = () => {
     setOpen(!open);
   }
+
+
 
   return (
    <div className={classes.main}>
@@ -146,6 +150,9 @@ function Header () {
         </Collapse>
         </div>
         <Link to="/authorization">
+          <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
+        </Link>
+        <Link to="/login">
           <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
         </Link>
    </div>
