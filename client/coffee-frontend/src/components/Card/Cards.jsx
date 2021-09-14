@@ -16,16 +16,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadingCoffee } from "../../redux/features/Coffe";
 import { useParams } from "react-router-dom";
 
+
+
 const useStyles = makeStyles({
   root: {
     width: 230,
     height: 290,
     margin: 30,
-    padding: "20px 30px",
+    padding: "20px 0px",
   },
   media: {
-    width: 170,
-    height: 120,
+    width: 190,
+    height: 128,
     borderRadius: 10,
   },
   buy1: {
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
   },
   description: {
     width: "950px",
-    paddingLeft: "30px",
+
   },
   name: {
     fontFamily: "Arial",
@@ -140,11 +142,11 @@ const Cards = () => {
   //===========================НЕТРОГАТЬ=============================================
 
   return (
-    <div className={classes.main1}>
+    <div className={classes.main1} >
       {loadCoffee.map((item) => {
         return (
-          <Card className={classes.root}>
-            <CardActionArea>
+          <Card className={classes.root} >
+            <CardActionArea onClick={()=> handleClickOpen(item._id)}>
               <img src={item.image} className={classes.media} />
               <CardContent>
                 <Typography gutterBottom variant="h6" component="h2">
@@ -164,7 +166,6 @@ const Cards = () => {
               <Button
                 variant="outlined"
                 color="primary"
-                onClick={()=> handleClickOpen(item._id)}
               >
                 Купить
               </Button>
