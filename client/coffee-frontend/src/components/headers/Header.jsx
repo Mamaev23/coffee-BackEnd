@@ -123,6 +123,7 @@ function Header () {
    <div className={classes.main}>
      <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
       <div className={classes.bar}>
+        <p>Выйти</p>
         <ListItem button  className={classes.category1}>
           <a href="/"  className={classes.nav}>
           <ListItemText primary="Главная" />
