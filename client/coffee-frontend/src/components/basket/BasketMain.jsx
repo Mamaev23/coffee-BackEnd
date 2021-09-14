@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
-import coffee from '../../redux/features/Coffe';
-
+import React, { useState } from "react";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
+import coffee from "../../redux/features/Coffe";
 
 const useStyles = makeStyles({
   image: {
-    width: 30,
+    width: 50,
   },
   main: {
-    marginTop: 150,
+    marginTop: 490,
     position: "absolute",
     zIndex: 2,
     backgroundColor: "white",
     borderRadius: 5,
     padding: 15,
     left: 950,
-    width: 420
+    width: 420,
   },
   main1: {
-    display: 'flex',
+    display: "flex",
   },
   main2: {
-    marginLeft: 13
+    marginLeft: 13,
   },
   close: {
     position: "inherit",
@@ -32,71 +31,44 @@ const useStyles = makeStyles({
     cursor: "pointer",
     opacity: 0.5,
     fontSize: 14,
-  }
-})
+  },
+});
 
 const BasketMain = (props) => {
-
-  const classes = useStyles()
+  const classes = useStyles();
 
   const handleClose = () => {
-    props.setOpen(true)
-  }
+    props.setOpen(true);
+  };
 
-  const state = useState()
-
-  const userById = useSelector(state => state.basket.userById)
-
-
-
-  const handleSee = (id, a, amount) => {
-
-    const state = {
-      coffee, userById
-    }
-
-    const coffee = state.coffee.find((item) => {
-      if (item.id === id) {
-        return item
-      }
-    })
-    return (
-      <tr key={coffee.id}>
-        <td>{a}</td>
-        <td>
-          <img src={coffee.image} className={classes.image} alt="" />
-        </td>
-        <td>{coffee.name}</td>
-        <td>
-          <div>
-            <div>{amount}</div>
-          </div>
-        </td>
-        <td>{coffee.price}</td>
-        <td>
-        </td>
-      </tr>
-    );
-  }
-  const coffee = useSelector(state => state.basket.coffee)
+  const basket = useSelector((state) => state.basket.basketUser);
+  console.log(basket[0].coffeeId);
 
   return (
-      <Container className={classes.main}>
-        <span className={classes.close} onClick={handleClose}>Закрыть</span>
-        <table>
-          <thead>
-          <tr className={classes.main1}>
-            <th className={classes.main2}>image</th>
-            <th className={classes.main2}>name</th>
-            <button className={classes.main2}>-</button>
-            <th className={classes.main2}>amount</th>
-            <button className={classes.main2}>+</button>
-            <th className={classes.main2}>price</th>
-          </tr>
-          </thead>
-
-        </table>
-      </Container>
+    <Container className={classes.main}>
+      <span className={classes.close} onClick={handleClose}>
+        Закрыть
+      </span>
+      <table>
+        <thead>
+          {basket[0].coffeeId.map((item) => {
+            return (
+              <tr className={classes.main1}>
+                <th className={classes.main2}>
+                  <img className={classes.image} src={item.image} alt="" />
+                </th>
+                <th className={classes.main2}>{item.name}</th>
+                <button className={classes.main2}>-</button>
+                <th className={classes.main2}>13</th>
+                <button className={classes.main2}>+</button>
+                <th className={classes.main2}>{item.price}</th>
+                <button className={classes.main2}>X</button>
+              </tr>
+            );
+          })}
+        </thead>
+      </table>
+    </Container>
   );
 };
 

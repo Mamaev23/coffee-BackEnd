@@ -1,36 +1,34 @@
-import coffee from './Coffe';
-
 const initialState = {
   loadCoffee: [],
   coffee: [
     {id: 1, coffeeId: 2, amount: 1}
   ],
-  userById: []
+  basketUser: []
 }
 
 export default function basket (state = initialState, action) {
 switch (action.type) {
-  // case "minus": {
-  //   const findAmount = state.coffee.find(
-  //     (item) => item.
-  //   )
-  // }
+  case "load/user/fulfilled":
+    return {
+      ...state,
+      basketUser: [
+        ...state.basketUser,
+        {
+
+        }
+      ]
+    }
   case "add/coffee/fulfilled":
     return {
       ...state,
-      coffee: [
-        ...state.coffee,
+      basketUser: [
+        ...state.basketUser,
         {
-          id: state.coffee.length + 1,
+          id: state.basketUser.length + 1,
           coffeeId: action.id,
           amount: 1,
         },
       ],
-    }
-  case "get/basket/fulfilled":
-    return {
-      ...state,
-      basket: action.payload.data
     }
 
   case "load/coffee/fulfilled":
@@ -39,12 +37,17 @@ switch (action.type) {
       loadCoffee: action.payload.data
     }
 
+  case "get/basket/fulfilled":
+    return {
+      ...state,
+      basketUser: [action.payload],
+    };
+
   default:
     return state
 }
 }
 export const addCoffeeToCart = (id) => {
-  console.log(id)
   return ( dispatch ) => {
     fetch(`http://localhost:4000/addCoffeeToCart/613e0a0725b12bced5b7da32`, {
       method: "PATCH",
@@ -71,7 +74,7 @@ export const loadCoffee = () => {
 }
 
 export const loadUserById = (id) => {
-  return (dispatch) => {
+  return  async (dispatch) => {
     fetch(`http://localhost:4000/user/${id}`)
     .then((res) => res.json())
     .then((data) => {

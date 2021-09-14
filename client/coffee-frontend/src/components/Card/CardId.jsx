@@ -115,6 +115,7 @@ function CardId({ name, description, image, volume, id}) {
   const [sum, setSum] = useState(15)
   const [counter, setCounter] = useState(1)
 
+
   function plus() {
     setCounter(counter + 1)
     setSum(sum + 15)
@@ -129,7 +130,6 @@ function CardId({ name, description, image, volume, id}) {
   const [open, setOpen] = React.useState(true);
 
   const handleAddCoffee = (id) => {
-    console.log(id)
     dispatch(addCoffeeToCart(id));
   }
 

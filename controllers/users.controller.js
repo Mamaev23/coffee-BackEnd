@@ -76,7 +76,6 @@ module.exports.usersController = {
 
     try {
       const  data  = req.body
-      console.log(data)
        const {id} = req.params
 
       const cart = await User.findByIdAndUpdate(id,
@@ -89,16 +88,15 @@ module.exports.usersController = {
     }
   },
 
-  getUser: async (req, res) => {
+  getUserId: async (req, res) => {
+    const { id } = req.params;
     try {
-      const { id } = req.params
-
       const user = await User.findById(id).populate('coffeeId')
       res.json(user)
     } catch (e) {
       res
       .status(400)
-      .json({error: "Ошибка: " + e.toString() })
+      .json({error: "ААааашибка  у тибя: " + e.toString() })
     }
   }
 };

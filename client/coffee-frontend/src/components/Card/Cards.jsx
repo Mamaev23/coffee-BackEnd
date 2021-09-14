@@ -15,6 +15,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { loadingCoffee } from "../../redux/features/Coffe";
 import { useParams } from "react-router-dom";
+import { loadUserById } from '../../redux/features/Basket';
 
 const useStyles = makeStyles({
   root: {
@@ -113,7 +114,7 @@ const Cards = () => {
   const [open, setOpen] = React.useState(false);
   const [coffee, setCoffee] = useState({})
 
-  const [opened, setOpened] = useState(false);
+
   const classes = useStyles();
   //=========================НЕТРОГАТЬ==========================================
 
@@ -130,6 +131,10 @@ const Cards = () => {
     dispatch(loadingCoffee(id));
   }, [id]);
 
+
+  useEffect(() => {
+    dispatch(loadUserById("613e0a0725b12bced5b7da32"))
+  }, [dispatch])
   if (loadPage) {
     return (
       <div className="spinner-border" role="status">
