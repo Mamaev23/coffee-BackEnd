@@ -59,7 +59,7 @@ nav1:{
     backgroundColor: 'theme.palette.background.paper',
   },
   nested: {
-    display:'block',
+    display:'grid',
     padding: '8px 0px',
     paddingLeft: 'theme.spacing(4)',
     backgroundColor: 'white',
@@ -88,6 +88,11 @@ nav1:{
       borderRadius: 50,
       backgroundColor: '#f1f1f1'
     }
+  },
+  navCategory: {
+    color: 'black',
+    textDecoration: 'none',
+    paddingTop:10
   }
 
 })
@@ -138,7 +143,7 @@ function Header () {
             <ListItem button className={classes.nested}>
               {loadCategory.map((item) => {
                 return (
-                  <Link to={`/category/${item._id}`} style={{color: "red"}}>{item.name}</Link>
+                  <Link to={`/category/${item._id}`} className={classes.navCategory}>{item.name}</Link>
                 )
               })}
             </ListItem>

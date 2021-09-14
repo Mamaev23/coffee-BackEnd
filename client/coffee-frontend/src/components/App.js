@@ -10,8 +10,6 @@ import Main from './main/Main';
 import SignIn from './Sign/SignIn';
 
 
-
-
 function App() {
 
   return (
@@ -22,7 +20,7 @@ function App() {
             <Route exact path="/">
               <PhotoCarousel/>
               <Main />
-              <Footer/>
+              {/*<Footer/>*/}
             </Route>
             <Route path="/category/:id">
               <CoffeePageByCategory/>
@@ -32,6 +30,7 @@ function App() {
             </Route>
             <Route path="/login">
               <SignIn/>
+            <Route path='/coffee/:id}'>
             </Route>
           </Switch>
       </Provider>
