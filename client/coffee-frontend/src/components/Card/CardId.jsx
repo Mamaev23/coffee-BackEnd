@@ -8,8 +8,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadingCoffee } from '../../redux/features/Coffe';
+import coffee, { loadingCoffee } from '../../redux/features/Coffe';
 import { useParams } from 'react-router-dom';
+import basket, { addCoffeeToCart, loadCoffee } from '../../redux/features/Basket';
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     color: 'black'
   },
-  descript:{
+  descript: {
     width: '350px',
     fontSize: '14px',
     color: 'black'
@@ -105,11 +106,15 @@ const useStyles = makeStyles({
   }
 });
 
-function CardId({ name, description, image, volume}) {
+function CardId({ name, description, image, volume, id}) {
   const classes = useStyles()
+
+  const state = useState()
+  const dispatch = useDispatch()
 
   const [sum, setSum] = useState(15)
   const [counter, setCounter] = useState(1)
+
 
   function plus() {
     setCounter(counter + 1)
@@ -123,6 +128,10 @@ function CardId({ name, description, image, volume}) {
   }
 
   const [open, setOpen] = React.useState(true);
+
+  const handleAddCoffee = (id) => {
+    dispatch(addCoffeeToCart({ id }));
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -167,7 +176,9 @@ function CardId({ name, description, image, volume}) {
         <DialogActions>
           <div className={classes.buttons}>
             <h3 className={classes.price}>{sum}$</h3>
-            <Button variant="contained" color="primary" className={classes.buy}>
+            <Button variant="contained" color="primary" className={classes.buy} onClick={() => {
+              handleAddCoffee(id);
+            }}>
               Купить
             </Button>
           </div>

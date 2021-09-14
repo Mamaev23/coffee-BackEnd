@@ -1,12 +1,18 @@
 const initialState = {
-  user: {},
-  token: null,
+  token: localStorage.getItem("token"),
   error: null,
   signIn: false
 }
 
 export default function authReducer (state = initialState, action) {
   switch (action.type) {
+    case "logout/user/rejected":
+      return {
+        ...state,
+        token: null,
+        error: null,
+        signIn: false
+      }
     case "load/userDataSign/pending":
       return {
         ...state,
@@ -26,7 +32,6 @@ export default function authReducer (state = initialState, action) {
     case "load/userData/pending":
       return {
         ...state,
-        user: action.payload.obj.newUser,
         token: action.payload.obj.token,
       }
     default:
@@ -68,7 +73,7 @@ export const loadingUserData = (firstName, lastName, login, password) => {
 
 export const doLogin = (login, password) => {
   return dispatch => {
-    fetch("http://localhost:4000/users", {
+    fetch("http://localhost:4000/login", {
       method: "POST",
       body: JSON.stringify({login, password}),
       headers: {
@@ -79,6 +84,7 @@ export const doLogin = (login, password) => {
     .then((data) => {
       if(!data.error) {
         dispatch({type: "load/userDataSign/pending", payload: { data }})
+        localStorage.setItem("token", data)
       }else {
         dispatch({type: "load/errorDataSign/rejected", error: { data }})
       }

@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Container, Grid, Link } from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TelegramIcon from  "@material-ui/icons/Telegram"
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import {Link} from "react-router-dom"
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 
@@ -13,6 +14,8 @@ const useStyles = makeStyles({
     backgroundColor: "#ececee",
     borderRadius: '30px 30px 0px 0px',
 
+    height: 80,
+    backgroundColor: "black",
   },
   flex: {
     display: "flex"
@@ -20,22 +23,20 @@ const useStyles = makeStyles({
   shrift: {
     color: 'black',
     fontSize: 20,
-  },
-  container: {
-    justifyContent: "space-between",
-    alignItems: 'center'
-  },
-  main: {
-    paddingTop: '10px',
+    textDecoration: 'none'
   },
   icons: {
     fontSize: 40,
     color: "darkred",
     "&:hover": {
-      color: "red"
+      color: "red",
+
     },
   },
-  logo:{
+  pust: {
+    marginTop: 10
+  },
+logo:{
     width:65,
     fontcolor: 'white'
   },

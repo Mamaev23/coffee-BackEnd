@@ -113,6 +113,7 @@ export default function SignIn() {
               onClick={() => dispatch(doLogin(login, password))}
             >
              <Link href='/' color="inherit">Войти</Link>
+              <a href="/">SIGN UP</a>
             </Button>
           </form>
         </div>
