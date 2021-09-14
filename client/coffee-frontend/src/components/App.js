@@ -1,3 +1,5 @@
+import { Provider, useDispatch, useSelector } from 'react-redux'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { store } from '../redux/configureStore'
@@ -7,6 +9,8 @@ import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeePageByCategory from './page/CoffeePageByCategory';
 import SignUp from './Sign/SignUp';
 import Main from './main/Main';
+import { useEffect } from 'react';
+import { loadUserById } from '../redux/features/Basket';
 import Contact from './contacts/contact';
 import SignIn from './Sign/SignIn';
 

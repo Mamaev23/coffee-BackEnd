@@ -6,7 +6,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CardId from './Card';
+import CardId from './CardId';
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -15,6 +15,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { loadingCoffee } from "../../redux/features/Coffe";
 import { useParams } from "react-router-dom";
+import { loadUserById } from '../../redux/features/Basket';
 
 
 
@@ -115,7 +116,7 @@ const Cards = () => {
   const [open, setOpen] = React.useState(false);
   const [coffee, setCoffee] = useState({})
 
-  const [opened, setOpened] = useState(false);
+
   const classes = useStyles();
   //=========================НЕТРОГАТЬ==========================================
 
@@ -132,6 +133,10 @@ const Cards = () => {
     dispatch(loadingCoffee(id));
   }, [id]);
 
+
+  useEffect(() => {
+    dispatch(loadUserById("613e0a0725b12bced5b7da32"))
+  }, [dispatch])
   if (loadPage) {
     return (
       <div className="spinner-border" role="status">
@@ -181,6 +186,7 @@ const Cards = () => {
           description={coffee.description}
           image={coffee.image}
           volume={coffee.volume}
+          id={coffee._id}
         />
       ) : (
         ""

@@ -9,6 +9,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadingCategory } from '../../redux/features/Coffe';
+import Basket from '../basket/Basket';
 
 
 const useStyles = makeStyles({
@@ -149,6 +150,7 @@ function Header () {
           </List>
         </Collapse>
         </div>
+        <Basket/>
         <Link to="/authorization">
           <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
         </Link>
