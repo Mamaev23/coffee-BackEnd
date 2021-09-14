@@ -13,7 +13,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useDispatch, useSelector } from "react-redux";
-import { loadingCoffee } from "../../redux/features/Coffe";
+import { loadingCoffee, loadRandomCoffee } from "../../redux/features/Coffe";
 import { useParams } from "react-router-dom";
 
 
@@ -24,11 +24,14 @@ const useStyles = makeStyles({
     height: 290,
     margin: 30,
     padding: "20px 0px",
+    marginBottom:150,
+    boxSizing: 'border-box'
   },
   media: {
     width: 190,
     height: 128,
     borderRadius: 10,
+    marginLeft: 22
   },
   buy1: {
     display: "grid",
@@ -119,18 +122,18 @@ const Cards = () => {
   const classes = useStyles();
   //=========================НЕТРОГАТЬ==========================================
 
-  const { loadCoffee, loadPage } = useSelector((state) => state.coffee);
+  const {randomCoffee, loadPage} = useSelector(state => state.coffee)
   const dispatch = useDispatch();
   const handleClickOpen = (id) => {
-    setCoffee(loadCoffee.find(item => item._id === id))
+    setCoffee(randomCoffee.find(item => item._id === id))
     setOpen(!open);
   };
 
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(loadingCoffee(id));
-  }, [id]);
+    dispatch(loadRandomCoffee());
+  }, []);
 
   if (loadPage) {
     return (
@@ -142,8 +145,12 @@ const Cards = () => {
   //===========================НЕТРОГАТЬ=============================================
 
   return (
+    <>
+      <div style={{textAlign:'center', margin: '30px 0px'}}>
+      <h2>Рандомные</h2>
+      </div>
     <div className={classes.main1} >
-      {loadCoffee.map((item) => {
+      {randomCoffee.map((item) => {
         return (
           <Card className={classes.root} >
             <CardActionArea onClick={()=> handleClickOpen(item._id)}>
@@ -186,6 +193,7 @@ const Cards = () => {
         ""
       )}
     </div>
+    </>
   );
 };
 

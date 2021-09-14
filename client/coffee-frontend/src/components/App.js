@@ -6,9 +6,9 @@ import Header from './headers/Header'
 import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeePageByCategory from './page/CoffeePageByCategory';
 import SignUp from './Sign/SignUp';
-import Main from './main/Main';
 import Contact from './contacts/contact';
 import SignIn from './Sign/SignIn';
+import Cards from './Card/Cards';
 
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
           <Switch>
             <Route exact path="/">
               <PhotoCarousel/>
-              <Main />
-              {/*<Footer/>*/}
+              <Cards/>
+              <Footer/>
             </Route>
             <Route path="/category/:id">
               <CoffeePageByCategory/>

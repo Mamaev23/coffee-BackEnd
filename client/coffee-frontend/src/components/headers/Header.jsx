@@ -152,10 +152,7 @@ function Header () {
         <Link to="/authorization">
           <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
         </Link>
-        <Link to="/login">
-          <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
-        </Link>
-   </div>
+           </div>
    </div>
   )
 }
