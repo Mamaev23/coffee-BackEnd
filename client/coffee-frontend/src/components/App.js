@@ -7,6 +7,7 @@ import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeePageByCategory from './page/CoffeePageByCategory';
 import SignUp from './Sign/SignUp';
 import Main from './main/Main';
+import Contact from './contacts/contact';
 import SignIn from './Sign/SignIn';
 
 
@@ -28,9 +29,11 @@ function App() {
             <Route path="/authorization">
               <SignUp/>
             </Route>
+            <Route path="/contacts">
+              <Contact />
+            </Route>
             <Route path="/login">
               <SignIn/>
-            <Route path='/coffee/:id}'>
             </Route>
           </Switch>
       </Provider>

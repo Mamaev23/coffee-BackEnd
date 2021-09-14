@@ -7,7 +7,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import Cart from '../Carts/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadingCategory } from '../../redux/features/Coffe';
 
@@ -129,9 +128,9 @@ function Header () {
           </a>
         </ListItem>
           <ListItem button  className={classes.category1}>
-            <a href="" className={classes.nav}>
+            <Link to="/contacts" className={classes.nav}>
             <ListItemText primary="Контакты" />
-            </a>
+            </Link>
           </ListItem>
         <div>
         <ListItem button onClick={handleClick} className={classes.category1}>
@@ -150,7 +149,6 @@ function Header () {
           </List>
         </Collapse>
         </div>
-      <Cart />
         <Link to="/authorization">
           <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
         </Link>
