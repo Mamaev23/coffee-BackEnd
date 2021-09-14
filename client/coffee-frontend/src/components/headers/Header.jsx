@@ -98,9 +98,10 @@ nav1:{
 })
 
 function Header () {
-  const { user, token } = useSelector(state => state.authReducer)
   const { loadCategory } = useSelector(state => state.coffee)
   const dispatch = useDispatch()
+
+
 
 
   useEffect(() => {
@@ -123,7 +124,6 @@ function Header () {
      <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
       <div className={classes.bar}>
         <ListItem button  className={classes.category1}>
-          {token ? <a href="#">{user.name}</a> : null}
           <a href="/"  className={classes.nav}>
           <ListItemText primary="Главная" />
           </a>
@@ -152,6 +152,9 @@ function Header () {
         </div>
       <Cart />
         <Link to="/authorization">
+          <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
+        </Link>
+        <Link to="/login">
           <i className="fas fa-user" style={{ fontSize: 18, margin: 16, color: "#845426" }}/>
         </Link>
    </div>
