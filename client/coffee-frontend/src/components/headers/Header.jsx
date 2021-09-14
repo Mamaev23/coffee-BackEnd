@@ -98,8 +98,11 @@ nav1:{
 })
 
 function Header () {
+  const { signIn } = useSelector(state => state.authReducer)
   const { loadCategory } = useSelector(state => state.coffee)
   const dispatch = useDispatch()
+
+  const [login, setLogin] = useState(signIn)
 
 
 
@@ -117,12 +120,21 @@ function Header () {
     setOpen(!open);
   }
 
+  const logout = () => {
+    localStorage.clear()
+    setLogin(!login)
+    dispatch({type: "logout/user/rejected"})
+  }
+
 
 
   return (
    <div className={classes.main}>
      <img src="https://i.postimg.cc/wTrmVRGZ/Pngtree-hand-painted-brown-coffee-cup-3400766.png" className={classes.logo}/>
       <div className={classes.bar}>
+        {login ? "" : <button onClick={logout}>
+          Выйти
+        </button>}
         <ListItem button  className={classes.category1}>
           <a href="/"  className={classes.nav}>
           <ListItemText primary="Главная" />
