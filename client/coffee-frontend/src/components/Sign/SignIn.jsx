@@ -98,12 +98,6 @@ export default function SignIn() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="Я хочу получать вдохновение, маркетинговые акции и обновления по электронной почте."
-                />
-              </Grid>
             </Grid>
             <Button
               fullWidth
@@ -113,7 +107,6 @@ export default function SignIn() {
               onClick={() => dispatch(doLogin(login, password))}
             >
              <Link href='/' color="inherit">Войти</Link>
-              <a href="/">SIGN UP</a>
             </Button>
           </form>
         </div>
