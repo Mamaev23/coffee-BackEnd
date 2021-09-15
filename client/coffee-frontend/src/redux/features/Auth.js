@@ -1,5 +1,4 @@
 const initialState = {
-  user: {},
   token: localStorage.getItem("token"),
   error: null,
   signIn: false,
@@ -8,6 +7,13 @@ const initialState = {
 
 export default function authReducer (state = initialState, action) {
   switch (action.type) {
+    case "logout/user/rejected":
+      return {
+        ...state,
+        token: null,
+        error: null,
+        signIn: false
+      }
     case "load/userDataSign/pending":
       return {
         ...state,
@@ -27,7 +33,6 @@ export default function authReducer (state = initialState, action) {
     case "load/userData/pending":
       return {
         ...state,
-        user: action.payload.obj.newUser,
         token: action.payload.obj.token,
       }
     default:

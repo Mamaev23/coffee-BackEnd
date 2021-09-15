@@ -1,19 +1,19 @@
-import { Provider, useSelector } from 'react-redux'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
+import { Switch, Route } from 'react-router-dom'
 import { store } from '../redux/configureStore'
 import Footer from './footer/Footer';
 import Header from './headers/Header'
 import PhotoCarousel from './headers/PhotoCarousel';
 import CoffeePageByCategory from './page/CoffeePageByCategory';
 import SignUp from './Sign/SignUp';
-import Main from './main/Main';
-import { useEffect } from 'react';
-import { loadUserById } from '../redux/features/Basket';
 import Contact from './contacts/contact';
 import SignIn from './Sign/SignIn';
+
 import BasketMain from './basket/BasketMain';
 import Basket from './basket/Basket';
 import CardId from './Card/CardId';
+
 import Cards from './Card/Cards';
 
 
@@ -26,8 +26,8 @@ function App() {
           <Switch>
             <Route exact path="/">
               <PhotoCarousel/>
-              <Main />
-              {/*<Footer/>*/}
+              <Cards/>
+              <Footer/>
             </Route>
             <Route path="/category/:id">
               <CoffeePageByCategory/>

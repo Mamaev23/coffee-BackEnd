@@ -71,7 +71,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Регистрация
         </Typography>
         <form onSubmit={(e) => e.preventDefault()}
               className={classes.form}>
@@ -130,7 +130,7 @@ export default function SignUp() {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                label="Я хочу получать вдохновение, маркетинговые акции и обновления по электронной почте."
               />
             </Grid>
           </Grid>
@@ -141,12 +141,12 @@ export default function SignUp() {
             className={classes.submit}
             onClick={() => dispatch(loadingUserData(firstName, lastName, login, password))}
           >
-            <a href="/">Sign Up</a>
+            <Link href='/' color="inherit">Зарегистрироваться</Link>
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
+              <Link href="/login" variant="body2">
+                Уже есть аккаунт? Войти
               </Link>
             </Grid>
           </Grid>

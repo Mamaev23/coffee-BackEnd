@@ -14,7 +14,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { doLogin, loadingUserData } from '../../redux/features/Auth';
-import { Redirect } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -69,7 +68,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Войти
           </Typography>
           <form onSubmit={(e) => e.preventDefault()}
                 className={classes.form}>
@@ -102,7 +101,7 @@ export default function SignIn() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="Я хочу получать вдохновение, маркетинговые акции и обновления по электронной почте."
                 />
               </Grid>
             </Grid>
@@ -113,15 +112,9 @@ export default function SignIn() {
               className={classes.submit}
               onClick={() => dispatch(doLogin(login, password))}
             >
-              <a href="/">Sign Up</a>
+             <Link href='/' color="inherit">Войти</Link>
+              <a href="/">SIGN UP</a>
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </div>
         <Box mt={5}>
