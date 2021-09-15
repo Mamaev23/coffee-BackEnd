@@ -2,11 +2,17 @@ const initialState = {
   loadCoffee: [],
   loadCategory: [],
   loadCoffeeByCategory: [],
+  randomCoffee: [],
   loadPage: true,
 }
 
 export default function coffee (state = initialState, action) {
   switch (action.type) {
+    case "load/randomCoffee/pending":
+      return {
+        ...state,
+        randomCoffee: action.payload.coffeeRandom
+      }
     case "loadCoffee/category/pending":
       return {
         ...state,
@@ -62,6 +68,19 @@ export const loadCoffeeById = (id) => {
     .then((res) => res.json())
     .then((data) => {
       dispatch({type: "loadCoffee/category/pending", payload: { data }})
+    })
+  }
+}
+
+
+//load Random Coffee
+
+export const loadRandomCoffee = () => {
+  return dispatch => {
+    fetch("http://localhost:4000/randomCoffee")
+    .then((res) => res.json())
+    .then((coffeeRandom) => {
+      dispatch({type: "load/randomCoffee/pending", payload: { coffeeRandom }})
     })
   }
 }

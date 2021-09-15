@@ -109,7 +109,6 @@ const useStyles = makeStyles({
 function CardId({ name, description, image, volume, id}) {
   const classes = useStyles()
 
-  const state = useState()
   const dispatch = useDispatch()
 
   const [sum, setSum] = useState(15)
