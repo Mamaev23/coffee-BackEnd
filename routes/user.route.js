@@ -11,6 +11,7 @@ router.post("/users", [
 ], usersController.registration)
 router.post("/login", usersController.login)
 router.patch("/addCoffeeToCart/:id", usersController.addCoffeeToCart)
+router.delete("/deleteCoffeeFromCart/:id", usersController.deleteCoffeeFromCard)
 router.get("/user/:id", usersController.getUserId)
 
 module.exports = router

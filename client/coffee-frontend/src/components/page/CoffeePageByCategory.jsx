@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCoffeeById,  } from '../../redux/features/Coffe';
+import { loadCoffeeById, loadingCoffee, } from '../../redux/features/Coffe';
 import { makeStyles } from "@material-ui/core/styles";
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -63,8 +63,11 @@ function CoffeePageByCategory(props) {
   }
 
   const handleAddCoffee = (id) => {
+    console.log(id)
     dispatch(addCoffeeToCart( id ));
   }
+
+
 
   return (
     <div className={classes.main}>
@@ -90,11 +93,11 @@ function CoffeePageByCategory(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              {/*<Button size="small" color="primary" style={{margin:'auto', padding: '10px 120px'}} onClick={() => {*/}
-              {/*  handleAddCoffee(id);*/}
-              {/*}}>*/}
-              {/*  В корзину*/}
-              {/*</Button>*/}
+              <Button size="small" color="primary" style={{margin:'auto', padding: '10px 120px'}} onClick={() => {
+                handleAddCoffee(item._id);
+              }}>
+                В корзину
+              </Button>
             </CardActions>
 
           </Card>

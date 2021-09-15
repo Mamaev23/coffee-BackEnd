@@ -31,6 +31,19 @@ switch (action.type) {
       ],
     }
 
+  case "delete/coffee/fulfilled":
+    return {
+      ...state,
+      basketUser: [
+        ...state.basketUser,
+        {
+         id: "",
+         coffeeId: "",
+         amount: ""
+        }
+      ]
+    }
+
   case "load/coffee/fulfilled":
     return {
       ...state,
@@ -63,6 +76,23 @@ console.log(id)
     .then((res) => res.json())
     .then((data) => {
       dispatch({type: "add/coffee/fulfilled"})
+    })
+  }
+}
+
+export const deleteCoffeeFromCart = (id) => {
+  console.log(id)
+  return (dispatch) => {
+    fetch(`http://localhost:4000/addCoffeeToCart/613e0a0725b12bced5b7da32`, {
+      method: "DELETE",
+      body: JSON.stringify({coffeeId: id}),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({type: "delete/coffee/fulfilled"})
     })
   }
 }

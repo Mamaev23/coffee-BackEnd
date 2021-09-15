@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
+import { deleteCoffeeFromCart } from '../../redux/features/Basket';
 
 const useStyles = makeStyles({
   image: {
@@ -40,8 +41,13 @@ const BasketMain = (props) => {
     props.setOpen(true);
   };
 
+  const handleDelete = (id) => {
+    console.log(id)
+    deleteCoffeeFromCart(id)
+  }
+
   const basket = useSelector((state) => state.basket.basketUser);
-  console.log(basket[0].coffeeId);
+  // console.log(basket[0].coffeeId);
 
   return (
     <Container className={classes.main}>
@@ -62,7 +68,9 @@ const BasketMain = (props) => {
                 <th className={classes.main2}>1</th>
                 <button className={classes.main2}>+</button>
                 <th className={classes.main2}>{item.price}</th>
-                <button className={classes.main2}>X</button>
+                <button  className={classes.main2} onClick={() => {
+                  handleDelete(item.id);
+                }}>X</button>
               </tr>
             );
           })}
