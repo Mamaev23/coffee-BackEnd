@@ -109,7 +109,6 @@ const useStyles = makeStyles({
 function CardId({ name, description, image, volume, id}) {
   const classes = useStyles()
 
-  const state = useState()
   const dispatch = useDispatch()
 
   const [sum, setSum] = useState(15)
@@ -130,7 +129,7 @@ function CardId({ name, description, image, volume, id}) {
   const [open, setOpen] = React.useState(true);
 
   const handleAddCoffee = (id) => {
-    dispatch(addCoffeeToCart({ id }));
+    dispatch(addCoffeeToCart( id ));
   }
 
   const handleClickOpen = () => {
