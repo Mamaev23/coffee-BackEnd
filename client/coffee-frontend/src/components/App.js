@@ -27,7 +27,6 @@ function App() {
             <Route exact path="/">
               <PhotoCarousel/>
               <Cards/>
-              <Footer/>
             </Route>
             <Route path="/category/:id">
               <CoffeePageByCategory/>

@@ -9,13 +9,13 @@ const useStyles = makeStyles({
     width: 50,
   },
   main: {
-    marginTop: 490,
+    marginTop: 108,
     position: "absolute",
     zIndex: 2,
     backgroundColor: "white",
     borderRadius: 5,
     padding: 15,
-    left: 950,
+    left: 1073,
     width: 420,
   },
   main1: {
@@ -63,7 +63,10 @@ const BasketMain = (props) => {
                 <th className={classes.main2}>
                   <img className={classes.image} src={item.image} alt="" />
                 </th>
+                <div>
                 <th className={classes.main2}>{item.name}</th>
+                </div>
+                <div>
                 <button className={classes.main2}>-</button>
                 <th className={classes.main2}>1</th>
                 <button className={classes.main2}>+</button>
@@ -71,6 +74,8 @@ const BasketMain = (props) => {
                 <button  className={classes.main2} onClick={() => {
                   handleDelete(item.id);
                 }}>X</button>
+                <button className={classes.main2}>X</button>
+                </div>
               </tr>
             );
           })}

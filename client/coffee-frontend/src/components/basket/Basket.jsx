@@ -26,7 +26,7 @@ const Basket = () => {
   return (
     <>
     <div>
-      <button className={classes.icon} onClick={() => handleOpen(true)}>{<ShoppingCartIcon/>}</button>
+      <button className={classes.icon} onClick={() => handleOpen(true)} style={{color:"#845426"}}>{<ShoppingCartIcon/>}</button>
     </div>
       {open===false ? <BasketMain setOpen={setOpen}/> : ""}
     </>
