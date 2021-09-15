@@ -139,8 +139,8 @@ const Cards = () => {
   }, [id]);
 
 
-  useEffect(() => {
-    dispatch(loadUserById("613e0a0725b12bced5b7da32"))
+  useEffect((id) => {
+    dispatch(loadUserById(id))
   }, [dispatch])
   if (loadPage) {
     return (
@@ -173,15 +173,15 @@ const Cards = () => {
               </CardContent>
             </CardActionArea>
             <CardActions className={classes.buy1}>
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => {
-                handleAddCoffee(id);
-              }}
-              >
-                Купить
-              </Button>
+              {/*<Button*/}
+              {/*  variant="outlined"*/}
+              {/*  color="primary"*/}
+              {/*  onClick={() => {*/}
+              {/*  handleAddCoffee(id);*/}
+              {/*}}*/}
+              {/*>*/}
+              {/*  Купить*/}
+              {/*</Button>*/}
               {/*====================================================================*/}
 
             </CardActions>

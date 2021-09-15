@@ -11,6 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardId from "../Card/CardId";
+import { addCoffeeToCart } from '../../redux/features/Basket';
 
 const useStyles = makeStyles({
   root: {
@@ -61,7 +62,9 @@ function CoffeePageByCategory(props) {
     )
   }
 
-
+  const handleAddCoffee = (id) => {
+    dispatch(addCoffeeToCart( id ));
+  }
 
   return (
     <div className={classes.main}>
@@ -87,9 +90,11 @@ function CoffeePageByCategory(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary" style={{margin:'auto', padding: '10px 120px'}} >
-                В корзину
-              </Button>
+              {/*<Button size="small" color="primary" style={{margin:'auto', padding: '10px 120px'}} onClick={() => {*/}
+              {/*  handleAddCoffee(id);*/}
+              {/*}}>*/}
+              {/*  В корзину*/}
+              {/*</Button>*/}
             </CardActions>
 
           </Card>

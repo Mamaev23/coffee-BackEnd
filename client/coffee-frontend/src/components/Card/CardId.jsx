@@ -130,7 +130,7 @@ function CardId({ name, description, image, volume, id}) {
   const [open, setOpen] = React.useState(true);
 
   const handleAddCoffee = (id) => {
-    dispatch(addCoffeeToCart({ id }));
+    dispatch(addCoffeeToCart( id ));
   }
 
   const handleClickOpen = () => {

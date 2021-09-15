@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
-import coffee from "../../redux/features/Coffe";
 
 const useStyles = makeStyles({
   image: {
@@ -52,6 +51,7 @@ const BasketMain = (props) => {
       <table>
         <thead>
           {basket[0].coffeeId.map((item) => {
+            console.log(item)
             return (
               <tr className={classes.main1}>
                 <th className={classes.main2}>
@@ -59,7 +59,7 @@ const BasketMain = (props) => {
                 </th>
                 <th className={classes.main2}>{item.name}</th>
                 <button className={classes.main2}>-</button>
-                <th className={classes.main2}>13</th>
+                <th className={classes.main2}>1</th>
                 <button className={classes.main2}>+</button>
                 <th className={classes.main2}>{item.price}</th>
                 <button className={classes.main2}>X</button>

@@ -78,7 +78,7 @@ module.exports.usersController = {
       const  data  = req.body
        const {id} = req.params
 
-      const cart = await User.findByIdAndUpdate({ _id: id },
+      const cart = await User.findByIdAndUpdate( id,
         {$addToSet: {coffeeId: data.coffeeId}}, { new: true })
       res.status(200).json(cart)
 

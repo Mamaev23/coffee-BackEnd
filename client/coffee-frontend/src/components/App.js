@@ -11,6 +11,10 @@ import { useEffect } from 'react';
 import { loadUserById } from '../redux/features/Basket';
 import Contact from './contacts/contact';
 import SignIn from './Sign/SignIn';
+import BasketMain from './basket/BasketMain';
+import Basket from './basket/Basket';
+import CardId from './Card/CardId';
+import Cards from './Card/Cards';
 
 
 function App() {

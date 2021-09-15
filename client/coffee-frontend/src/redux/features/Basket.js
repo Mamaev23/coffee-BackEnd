@@ -1,5 +1,3 @@
-import { stripLow } from 'validator';
-
 const initialState = {
   loadCoffee: [],
   coffee: [
@@ -50,17 +48,21 @@ switch (action.type) {
 }
 }
 export const addCoffeeToCart = (id) => {
+console.log(id)
   return ( dispatch ) => {
-    fetch(`http://localhost:4000/addCoffeeToCart/${id}`, {
+
+    fetch(`http://localhost:4000/addCoffeeToCart/613e0a0725b12bced5b7da32`, {
+
       method: "PATCH",
       body: JSON.stringify({coffeeId: id}),
+
       headers: {
         "Content-type": "application/json",
       },
     })
     .then((res) => res.json())
     .then((data) => {
-      dispatch({type: "add/coffee/fulfilled", payload: data})
+      dispatch({type: "add/coffee/fulfilled"})
     })
   }
 }
@@ -77,7 +79,7 @@ export const loadCoffee = () => {
 
 export const loadUserById = (id) => {
   return  async (dispatch) => {
-    fetch(`http://localhost:4000/user/${id}`)
+    fetch(`http://localhost:4000/user/613e0a0725b12bced5b7da32`)
     .then((res) => res.json())
     .then((data) => {
       dispatch({type: "get/basket/fulfilled", payload: data })
